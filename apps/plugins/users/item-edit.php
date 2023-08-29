@@ -75,18 +75,7 @@ $dialcodes = json_decode($json);
                                                     <label for="">Last Name</label>
                                                     <input type="text" name="last_name" value="<?php echo $user->last_name; ?>" class="mb-1 form-control p-details">
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <label for="">Company Name</label>
-                                                    <input type="text" name="company_name" value="<?php echo $user->company; ?>" class="mb-1 form-control p-details">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="">Company VAT</label>
-                                                    <input type="text" name="company_vat" value="<?php echo $user->company_vat; ?>" class="mb-1 form-control p-details">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="">Company CR</label>
-                                                    <input type="text" name="company_cr" value="<?php echo $user->company_cr; ?>" class="mb-1 form-control p-details">
-                                                </div>
+                                               
 
                                                 <div class="col-md-2">
                                                     <label for="">Dial Code</label>
@@ -120,22 +109,8 @@ $dialcodes = json_decode($json);
                                                     <label for="">Profile Image</label>
                                                     <input type="file" accept="image/*" name="profile_img" class="mb-1 form-control">
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <label for="">Companay VAT</label>
-                                                    <input type="file" accept="application/pdf" name="comp_vat_doc" class="mb-1 form-control">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="">Companay CR</label>
-                                                    <input type="file" accept="application/pdf" name="comp_cr_doc" class="mb-1 form-control">
-                                                </div>
-                                                <?php
-                                                if ($user_group == 'driver') { ?>
-                                                    <div class="col-md-6">
-                                                        <label for="">Driver Doc</label>
-                                                        <input type="file" accept="application/pdf" name="driver_doc" class="mb-1 form-control">
-                                                    </div>
-                                                <?php  }
-                                                ?>
+                                                
+                                               
                                                 <div class="col-12">
                                                     <input type="hidden" name="add_new_user" value="ok">
                                                     <input type="hidden" name="admin_user_id" value="<?php echo $_SESSION['user_id']; ?>">
