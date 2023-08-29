@@ -2,13 +2,12 @@
 <?php $GLOBALS["title"] = "Home"; ?>
 <?php import("apps/admin/inc/header.php"); ?>
 <?php import("apps/admin/inc/nav.php"); ?>
-
 <section>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
             <?php if(getAccessLevel()<=5): ?>
-            <div id="sidebar-col" class="col-md-2 bg-dark">
+            <div id="sidebar-col" class="col-md-2 <?php echo sidebar_bg; ?>">
                 <?php import("apps/admin/inc/sidebar.php"); ?>
             </div>
             <?php endif; ?>
