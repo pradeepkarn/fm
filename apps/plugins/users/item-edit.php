@@ -129,7 +129,7 @@ $dialcodes = json_decode($json);
                                                 dialSpan.innerText = dialCodes.value
                                                 dialCodes.addEventListener('change', () => {
                                                     dialSpan.innerText = dialCodes.value
-                                                })
+                                                });
                                             </script>
                                             </form>
                                             <?php
