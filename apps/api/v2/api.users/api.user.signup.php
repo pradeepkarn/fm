@@ -46,12 +46,8 @@ if (
     }
     if (!isset($req->username)) {
         $username = generate_username_by_email_trans($req->email, $try = 100, $db = $db);
-    }
-    if ($username == false) {
-        $res['msg'] = "please check email format";
-        $res['data'] = null;
-        echo json_encode($res);
-        die();
+    }else{
+        $username = $req->username;
     }
     if ($db->filter(['mobile' => $req->mobile])) {
         $res['msg'] = "This number is already registered, please provide other number";
@@ -69,6 +65,12 @@ if (
     $ugarr = ['user'];
     $paramObj->mobile = intval($req->mobile);
     $paramObj->email = $req->email;
+    if ($username == false) {
+        $res['msg'] = "please check email format";
+        $res['data'] = null;
+        echo json_encode($res);
+        die();
+    }
     $paramObj->username = $username;
     if ($db->filter(['username' => $username])) {
         $res['msg'] = "This username is already registered, please provide other";
