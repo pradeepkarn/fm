@@ -14,11 +14,11 @@
 
                         </div>
                     </li>
-                    <li class="nav-item px-1">
+                    <!-- <li class="nav-item px-1">
                         <div class="d-grid">
-                            <a class="btn btn-primary" href="/<?php echo home; ?>/admin/edit-account"><i class="fa-solid fa-user-shield"></i> Edit My Account</a>
+                            <a class="btn btn-primary" href="/<?php //echo home; ?>/admin/edit-account"><i class="fa-solid fa-user-shield"></i> Edit My Account</a>
                         </div>
-                    </li>
+                    </li> -->
 
                   
                     <li class="nav-item px-1">

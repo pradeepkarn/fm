@@ -26,7 +26,7 @@
                             </div>
                             <div class="card-body">
                             <?php if (authenticate()==true): 
-                                    $adr = getAddress($_SESSION['user_id']);
+                                    // $adr = getAddress($_SESSION['user_id']);
                                     $ac = new Account();
                                     $user = $ac->getLoggedInAccount();
                                     if($user!=false){ ?>

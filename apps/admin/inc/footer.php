@@ -46,8 +46,8 @@ x.addListener(sideMenuResponsive) // Attach listener function on state changes
       extended_valid_elements : 'script[src|async|defer|type|charset]',
       allow_html_in_named_anchor: true,
       image_list: [
-    <?php $mddb = new Mydb('pk_media');
-          $md = $mddb->allData($ord="ASC",$limit=5000000);
+    <?php $mddb = new Model('pk_media');
+          $md = $mddb->index($ord="ASC",$limit=500000);
           foreach ($md as $key => $mdvl) : ?>
         {title: '<?php echo $mdvl['media_title']; ?>', value: '<?php echo $mdvl['media_file']; ?>'},
         <?php endforeach; ?>

@@ -65,16 +65,16 @@ class Mydb extends Dbobjects
     public function transactData($arr)
     {
         $this->insertData = $arr;
-        return $this->transact();
+        return $this->create();
     }
     public function deleteData()
     {
         return $this->delete();
     }
-    public function transactionData($sqlarr)
-    {
-        return $this->transaction($sqlarr);
-    }
+    // public function transactionData($sqlarr)
+    // {
+    //     return $this->transaction($sqlarr);
+    // }
         
     public function update_sqlData()
     {
