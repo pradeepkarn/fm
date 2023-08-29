@@ -234,12 +234,6 @@ class Dbobjects extends Dbh
         $results = $stmt->fetch();
         return $results;
     }
-    public function execSql($sql)
-    {
-        $stmt = $this->connect()->prepare($sql);
-        $stmt->execute();
-        return $stmt->rowCount();
-    }
 
     // read end
 
@@ -368,6 +362,12 @@ class Dbobjects extends Dbh
         $stmt->execute();
         $cnt = $stmt->rowCount();
         return $cnt;
+    }
+    public function execSql($sql)
+    {
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+        return $stmt->rowCount();
     }
     // delete end
 
