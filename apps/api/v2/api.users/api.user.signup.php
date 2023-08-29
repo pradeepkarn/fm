@@ -19,7 +19,7 @@ if ($method === 'POST') {
 if (
     isset($req->first_name) && isset($req->last_name)
     && isset($req->mobile) && isset($req->email)
-    && isset($req->password) && (isset($req->national_id) && isset($req->user_group))
+    && isset($req->password) && isset($req->user_group)
 ) {
     if (!intval($req->mobile)) {
         $res['msg'] = "Mobile number must be numeric";
@@ -63,7 +63,7 @@ if (
         echo json_encode($res);
         die();
     }
-    $ugarr = ['user','driver'];
+    $ugarr = ['user'];
     $paramObj->mobile = intval($req->mobile);
     $paramObj->email = $req->email;
     $paramObj->username = $username;
@@ -72,66 +72,66 @@ if (
     $paramObj->name = $req->first_name . " " . $req->last_name;
     $paramObj->first_name = $req->first_name;
     $paramObj->last_name = $req->last_name;
-    $paramObj->user_group = in_array($req->user_group,$ugarr)?$req->user_group:'user';
-    $paramObj->company = isset($req->company_name)?$req->company_name:null;
-    $paramObj->company_details = isset($req->company_details)?$req->company_details:null;
-    $paramObj->company_cr = isset($req->company_cr)?$req->company_cr:null;
-    $paramObj->company_vat = isset($req->company_vat)?$req->company_vat:null;
-    $paramObj->driver_id = isset($req->driver_id)?$req->driver_id:null;
-    $paramObj->is_company = isset($req->is_company)?$req->is_company:0;
+    $paramObj->user_group = in_array($req->user_group, $ugarr) ? $req->user_group : 'user';
+    // $paramObj->company = isset($req->company_name)?$req->company_name:null;
+    // $paramObj->company_details = isset($req->company_details)?$req->company_details:null;
+    // $paramObj->company_cr = isset($req->company_cr)?$req->company_cr:null;
+    // $paramObj->company_vat = isset($req->company_vat)?$req->company_vat:null;
+    // $paramObj->driver_id = isset($req->driver_id)?$req->driver_id:null;
+    // $paramObj->is_company = isset($req->is_company)?$req->is_company:0;
 
     $db->tableName = 'pk_user';
     $db->insertData = arr($paramObj);
     try {
         $id = $db->create();
-        $user =  return_user_data_trans($id,$db);
+        $user =  return_user_data_trans($id, $db);
         if (intval($id)) {
             // Uploads
             if (isset($files->profile_img)) {
                 $imgfl = obj($files->profile_img);
                 if ($imgfl->error == 0) {
                     $ext = pathinfo($imgfl->name, PATHINFO_EXTENSION);
-                    $imgname = uniqid('profile_') ."_". $id . "." . $ext;
+                    $imgname = uniqid('profile_') . "_" . $id . "." . $ext;
                     move_uploaded_file($imgfl->tmp_name, MEDIA_ROOT . "images/profiles/$imgname");
                     $db->insertData['image'] = $imgname;
                 }
             }
-            if (isset($files->comp_vat_doc)) {
-                $imgfl = obj($files->comp_vat_doc);
-                if ($imgfl->error == 0) {
-                    $ext = pathinfo($imgfl->name, PATHINFO_EXTENSION);
-                    $docs = uniqid('comp_vat_doc_') ."_". $id . "." . $ext;
-                    move_uploaded_file($imgfl->tmp_name, MEDIA_ROOT . "docs/$docs");
-                    $db->insertData['comp_vat_doc'] = $docs;
-                }
-            }
-            if (isset($files->national_id_doc)) {
-                $imgfl = obj($files->national_id_doc);
-                if ($imgfl->error == 0) {
-                    $ext = pathinfo($imgfl->name, PATHINFO_EXTENSION);
-                    $docs = uniqid('national_id_doc_') ."_". $id . "." . $ext;
-                    move_uploaded_file($imgfl->tmp_name, MEDIA_ROOT . "docs/$docs");
-                    $db->insertData['national_id_doc'] = $docs;
-                }
-            }
-            if (isset($files->comp_cr_doc)) {
-                $imgfl = obj($files->comp_cr_doc);
-                if ($imgfl->error == 0) {
-                    $ext = pathinfo($imgfl->name, PATHINFO_EXTENSION);
-                    $docs = uniqid('comp_cr_doc_') ."_". $id . "." . $ext;
-                    move_uploaded_file($imgfl->tmp_name, MEDIA_ROOT . "docs/$docs");
-                    $db->insertData['comp_cr_doc'] = $docs;
-                }
-            }
-            if (isset($files->driver_doc)) {
-                $imgfl = obj($files->driver_doc);
-                if ($imgfl->error == 0) {
-                    $ext = pathinfo($imgfl->name, PATHINFO_EXTENSION);
-                    $docs = uniqid('driver_doc_') ."_". $id . "." . $ext;
-                    move_uploaded_file($imgfl->tmp_name, MEDIA_ROOT . "docs/$docs");
-                    $db->insertData['driver_doc'] = $docs;
-                }
-            }
+            // if (isset($files->comp_vat_doc)) {
+            //     $imgfl = obj($files->comp_vat_doc);
+            //     if ($imgfl->error == 0) {
+            //         $ext = pathinfo($imgfl->name, PATHINFO_EXTENSION);
+            //         $docs = uniqid('comp_vat_doc_') ."_". $id . "." . $ext;
+            //         move_uploaded_file($imgfl->tmp_name, MEDIA_ROOT . "docs/$docs");
+            //         $db->insertData['comp_vat_doc'] = $docs;
+            //     }
+            // }
+            // if (isset($files->national_id_doc)) {
+            //     $imgfl = obj($files->national_id_doc);
+            //     if ($imgfl->error == 0) {
+            //         $ext = pathinfo($imgfl->name, PATHINFO_EXTENSION);
+            //         $docs = uniqid('national_id_doc_') ."_". $id . "." . $ext;
+            //         move_uploaded_file($imgfl->tmp_name, MEDIA_ROOT . "docs/$docs");
+            //         $db->insertData['national_id_doc'] = $docs;
+            //     }
+            // }
+            // if (isset($files->comp_cr_doc)) {
+            //     $imgfl = obj($files->comp_cr_doc);
+            //     if ($imgfl->error == 0) {
+            //         $ext = pathinfo($imgfl->name, PATHINFO_EXTENSION);
+            //         $docs = uniqid('comp_cr_doc_') ."_". $id . "." . $ext;
+            //         move_uploaded_file($imgfl->tmp_name, MEDIA_ROOT . "docs/$docs");
+            //         $db->insertData['comp_cr_doc'] = $docs;
+            //     }
+            // }
+            // if (isset($files->driver_doc)) {
+            //     $imgfl = obj($files->driver_doc);
+            //     if ($imgfl->error == 0) {
+            //         $ext = pathinfo($imgfl->name, PATHINFO_EXTENSION);
+            //         $docs = uniqid('driver_doc_') ."_". $id . "." . $ext;
+            //         move_uploaded_file($imgfl->tmp_name, MEDIA_ROOT . "docs/$docs");
+            //         $db->insertData['driver_doc'] = $docs;
+            //     }
+            // }
             // uploads end
             $db->tableName = 'pk_user';
             $user = $db->pk($id);
@@ -160,7 +160,7 @@ if (
         die();
     }
 } else {
-    $res['msg'] = "All fields (First name, Last name, Mobile, Email, Password and National Id, user group) are mandatory";
+    $res['msg'] = "All fields (First name, Last name, Mobile, Email, Password) are mandatory";
     $res['data'] = null;
     echo json_encode($res);
     die();
