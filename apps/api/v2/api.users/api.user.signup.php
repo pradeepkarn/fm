@@ -28,12 +28,12 @@ if (
         die();
     }
     $paramObj = new stdClass;
-    if (!email_has_valid_dns($req->email)) {
-        $res['msg'] = "Please provide a live email";
-        $res['data'] = null;
-        echo json_encode($res);
-        die();
-    }
+    // if (!email_has_valid_dns($req->email)) {
+    //     $res['msg'] = "Please provide a live email";
+    //     $res['data'] = null;
+    //     echo json_encode($res);
+    //     die();
+    // }
     $db = new Dbobjects;
     $pdo = $db->dbpdo();
     $pdo->beginTransaction();
@@ -44,7 +44,9 @@ if (
         echo json_encode($res);
         die();
     }
-    $username = generate_username_by_email_trans($req->email, $try = 100, $db = $db);
+    if (!isset($req->username)) {
+        $username = generate_username_by_email_trans($req->email, $try = 100, $db = $db);
+    }
     if ($username == false) {
         $res['msg'] = "please check email format";
         $res['data'] = null;
@@ -57,6 +59,7 @@ if (
         echo json_encode($res);
         die();
     }
+
     if (empty(str_replace(" ", "", $req->password))) {
         $res['msg'] = "Password must not be blank.";
         $res['data'] = null;
@@ -67,6 +70,12 @@ if (
     $paramObj->mobile = intval($req->mobile);
     $paramObj->email = $req->email;
     $paramObj->username = $username;
+    if ($db->filter(['username' => $username])) {
+        $res['msg'] = "This username is already registered, please provide other";
+        $res['data'] = null;
+        echo json_encode($res);
+        die();
+    }
     $paramObj->national_id = $req->national_id;
     $paramObj->password = md5($req->password);
     $paramObj->name = $req->first_name . " " . $req->last_name;
