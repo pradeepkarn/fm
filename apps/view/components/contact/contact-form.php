@@ -5,7 +5,15 @@ $user = USER;
 <section style="min-height: 100vh; padding-top:100px;">
   <div class="container">
     <div class="row">
-      <div class="col-10 mx-auto grid-margin">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h4>Email: info@demo.com</h4>
+            <h4>Contact: 960000000000</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 grid-margin">
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Contact Us</h4>

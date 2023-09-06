@@ -5,8 +5,8 @@
 <?php $GLOBALS["title"] = "Home"; ?>
 <?php import("apps/admin/inc/header.php"); ?>
 <?php import("apps/admin/inc/nav.php");
-$plugin_dir = "products";
-$content_group = "product";
+$plugin_dir = "offers";
+$content_group = "offer";
 ?>
 <?php
 $page = new Dbobjects();
@@ -38,8 +38,26 @@ $page = $page->pk($GLOBALS['url_last_param']);
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-8">
-                                  <div class="row">
-                                   
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3>Category</h3>
+                                        <?php
+                                        $catData = multilevel_categories($parent_id = 0, $radio = true); ?>
+                                        <select required class="update_page form-control" name="parent_id" id="cats">
+                                            <option value="0" selected>Parent</option>
+                                            <?php echo display_option($nested_categories = $catData, $mark = ''); ?>
+                                        </select>
+                                        <script>
+                                            var exists = false;
+                                            $('#cats option').each(function() {
+                                                if (this.value == '<?php echo $page['parent_id']; ?>') {
+                                                    // exists = true;
+                                                    // return false;
+                                                    $("#cats").val("<?php echo $page['parent_id']; ?>");
+                                                }
+                                            });
+                                        </script>
+                                    </div>
                                     <div class="col-md-6">
                                         <h3>Status</h3>
                                         <select name="page_status" class="update_page form-control mb-2 mt-2">
@@ -58,55 +76,38 @@ $page = $page->pk($GLOBALS['url_last_param']);
 
                                 <h3 class="text-dark"><?php echo ucwords($content_group); ?> Name</h3>
                                 <input type="text" name="page_title" class="form-control mb-2 update_page" value="<?php echo $page['title']; ?>">
-                                <!-- <h1>Vendor search</h1> -->
-
-                                <?php
-                               
-                                $sale_price =  round(($page['price'] - $page['discount_amt']), 2);
-                                ?>
                                 <div class="row">
                                     <div class="col">
-                                        <b>Rent/Hr</b>
-                                        <input type="text" name="price" class="form-control mb-2 update_page" value="<?php echo  $page['price']; ?>">
+                                        <b>Link</b>
+                                        <input type="text" name="link" class="form-control mb-2 update_page" value="<?php echo  $page['link']; ?>">
                                     </div>
                                     <div class="col">
-                                        <b>Vat %</b>
-                                        <input type="text" name="tax" class="form-control mb-2 update_page" value="<?php echo $page['tax']; ?>">
+                                        <b>Discount %</b>
+                                        <input type="text" name="discount_perc" class="form-control mb-2 update_page" value="<?php echo $page['discount_perc']; ?>">
                                     </div>
-                                    <div class="col">
-                                        <b>Sale Price</b> <br>
-                                        <b>= <?php echo round($sale_price+($sale_price*0.15),2); ?></b>
-                                    </div>
-                                   
 
-                                </div>
-                                <div class="row hide">
-
-                                    <div class="col-3">
-                                        <b>Stock Qty</b>
-                                        <input type="text" name="qty" class="form-control mb-2 update_page" value="<?php echo $page['qty']; ?>">
-                                    </div>
 
                                 </div>
 
-                              
+
+
                                 <input type="checkbox" <?php matchData($page['show_title'], 1, "checked"); ?> name="page_show_title" class="update_page">
                                 <?php matchData($page['show_title'], 0, "Check to show Page Title"); ?>
                                 <?php matchData($page['show_title'], 1, "Uncheck to hide Page Title"); ?> &nbsp;
-                                <a target="_blank" href='<?php echo "/" . home . "/product/?pid={$page['id']}"; ?>'>View</a> &nbsp;
+                                <a target="_blank" href='<?php echo "/" . home . "/offers/?pid={$page['id']}"; ?>'>View</a> &nbsp;
                                 <?php $var = "/" . home . "/page/delete/" . $page['id'];
                                 $dltlink = "<a style='color: red;' href='{$var}'>Delete Page</a>";
                                 matchData($page['status'], 'trash', $dltlink); ?> &nbsp;
-                               
+
 
                                 <h4>Details <i class="fas fa-arrow-down"></i></h4>
                                 <textarea name="page_content" class=" form-control mb-2 update_page" rows="10"><?php echo $page['content']; ?></textarea>
-                               
+
                                 <input type="text" onkeyup="createSlug('page_slug_edit', 'page_slug_edit');" id="page_slug_edit" name="slug" class="form-control mb-2 update_page" value="<?php echo $page['slug']; ?>">
                                 <input type="hidden" name="page_id" class="form-control mb-2 update_page" value="<?php echo $page['id']; ?>">
                                 <input type="hidden" name="update_page" class="form-control mb-2 update_page" value="update_page">
-                              
-                               
+
+
                                 <div class="d-grid mb-5">
                                     <button id="update_page_btn" class="mt-3 btn btn-lg btn-secondary">Update</button>
                                 </div>
@@ -139,7 +140,7 @@ $page = $page->pk($GLOBALS['url_last_param']);
                                         overflow-y: scroll;
                                     }
                                 </style>
-                            
+
 
                                 <div id="colr-loading" class="spinner-border text-primary" role="status">
                                     <span class="sr-only">Loading...</span>
@@ -149,10 +150,10 @@ $page = $page->pk($GLOBALS['url_last_param']);
                                 <div class="related-product">
                                     <?php
                                     ajaxActive("#colr-loading");
-                                    
+
                                     ?>
-                               
-                                   
+
+
                                     <div id="res"></div>
                                 </div>
                                 <br>
@@ -201,26 +202,28 @@ $page = $page->pk($GLOBALS['url_last_param']);
                                     <input accept=".jpg,.png,.jpeg" type="file" name="add_more_img" class="form-control">
                                     <!-- <label for="">Image color *</label> -->
                                     <div id="more-img-with_clr"></div>
-                                   
+
                                 </form>
                                 <button id="add-more-img-btn" class="btn btn-primary btn-sm my-1">Add More Image</button>
                                 <?php pkAjax_form("#add-more-img-btn", "#add-more-img-form", "#more-img-with_clr", "click", true) ?>
-                                <!-- <p><b>Vendor Name: </b><?php // echo getTableRowById("pk_user", $page['created_by'])['name']; ?>
+                                <!-- <p><b>Vendor Name: </b><?php // echo getTableRowById("pk_user", $page['created_by'])['name']; 
+                                                            ?>
                                     <br>
-                                    <b>Vendor Mobile: </b><?php // echo getTableRowById("pk_user", $page['created_by'])['mobile']; ?>
+                                    <b>Vendor Mobile: </b><?php // echo getTableRowById("pk_user", $page['created_by'])['mobile']; 
+                                                            ?>
                                 </p> -->
                                 <input type="text" name="page_author" class="hide form-control mb-2 update_page" value="<?php echo $page['author']; ?>">
 
 
-                               
+
 
                                 <p>Publish Date : <?php echo $page['pub_date']; ?></p>
                                 <p>Update Date : <?php echo $page['update_date']; ?></p>
 
-                                
-                               
 
-                                
+
+
+
                             </div>
                         </div>
                     </div>
@@ -247,7 +250,7 @@ $page = $page->pk($GLOBALS['url_last_param']);
                 </script>
                 <div id="alertResult"></div>
 
-          
+
 
                 <!-- Main Area ends-->
             </div>

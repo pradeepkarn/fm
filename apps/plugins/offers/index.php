@@ -3,8 +3,8 @@ $url = explode("/", $_SERVER["QUERY_STRING"]);
 $path = $_SERVER["QUERY_STRING"];
 $GLOBALS['url_last_param'] = end($url);
 $GLOBALS['url_2nd_last_param'] = prev($url);
-$plugin_dir = "products";
-$content_group = "product";
+$plugin_dir = "offers";
+$content_group = "offer";
 import("apps/plugins/{$plugin_dir}/function.php");
 
 if ("{$url[0]}/{$url[1]}" == "admin/$plugin_dir") {
@@ -128,7 +128,7 @@ if ("{$url[0]}/{$url[1]}" == "admin/$plugin_dir") {
                         return;
                     }
                     if ($_FILES['banner']['name'] == "") {
-                        echo js_alert('Please choose a product image');
+                        echo js_alert('Please choose a offer image');
                         return;
                     }
                     // print_r($_POST);

@@ -40,48 +40,11 @@ function updatePage()
         if (isset($_POST['parent_id'])) {
             $db->insertData['parent_id'] = $_POST['parent_id'];
         }
-        if (isset($_POST['page_content_category'])) {
-            $db->insertData['category'] = sanitize_remove_tags($_POST['page_content_category']);
-        }
-        $db->insertData['status'] = $_POST['page_status'];
-        $db->insertData['content_type'] = $_POST['page_content_type'];
-
-        $db->insertData['banner'] = $_POST['page_banner'];
-        $db->insertData['post_category'] = isset($_POST['post_category']) ? $_POST['post_category'] : null;
-
-        if (isset($_POST['address'])) {
-            $db->insertData['address'] = $_POST['address'];
-        }
-        if (isset($_POST['price'])) {
-            $db->insertData['price'] = floatval($_POST['price']);
-        }
-        if (isset($_POST['tax'])) {
-            $db->insertData['tax'] = floatval($_POST['tax']);
-        }
-        // if (isset($_POST['related_product_id'])) {
-        //     $db->insertData['json_obj'] = json_encode(array('related_products' => $_POST['related_product_id']));
-        // } else {
-        //     $db->insertData['json_obj'] = json_encode(array('related_products' => array()));
-        // }
-        // $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-        $arrDays = [];
-        // foreach ($days as $key => $day) {
-        //     if(isset($_POST[$day."_open"]) && isset($_POST[$day."_close"])){
-        //         if ($_POST[$day."_close"]=="" || $_POST[$day."_close"]=="") {
-        //             $_SESSION['msg'][] = "Empty time is allowed";
-        //             echo js_alert(msg_ssn(return: true));
-        //             return;
-        //         }
-        //         $arrDays['openings'][] = array(
-        //             "day_key"=> ($key+1),
-        //             "day"=> $day,
-        //             "open"=> $_POST[$day."_open"],
-        //             "close"=> $_POST[$day."_close"]
-        //         );
-        //     }
-        // }
         
-        $db->insertData['jsn'] = json_encode($arrDays);
+        $db->insertData['status'] = $_POST['page_status'];
+        
+        // $db->insertData['banner'] = $_POST['page_banner'];
+       
         // $db->insertData['content_info'] = $_POST['page_content_info'];
         $db->insertData['update_date'] = date("Y-m-d h:i:sa", time());
         $author = new Mydb('pk_user');
@@ -110,7 +73,7 @@ function updatePage()
         return $db->updateTransaction();
     }
 }
-function addContent($type = "product")
+function addContent($type = "faq")
 {
     if (isset($_POST['add_new_content'])) {
         $db = new Dbobjects();
@@ -125,74 +88,14 @@ function addContent($type = "product")
         } else {
             $db->insertData['status'] = 'draft';
         }
-        if (isset($_POST['address'])) {
-            $db->insertData['address'] = $_POST['address'];
-        }
-        if (isset($_POST['price'])) {
-            $db->insertData['price'] = floatval($_POST['price']);
-        }
-        if (isset($_POST['tax'])) {
-            $db->insertData['tax'] = floatval($_POST['tax']);
-        }
-        if (isset($_POST['related_product_id'])) {
-            $db->insertData['json_obj'] = json_encode(array('related_products' => $_POST['related_product_id']));
-        } else {
-            $db->insertData['json_obj'] = json_encode(array('related_products' => array()));
-        }
+       
 
-        // $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-        // $arrDays = [];
-        // foreach ($days as $key => $day) {
-        //     if(isset($_POST[$day."_open"]) && isset($_POST[$day."_close"])){
-        //         if ($_POST[$day."_close"]=="" || $_POST[$day."_close"]=="") {
-        //             $_SESSION['msg'][] = "Empty time is allowed";
-        //             echo js_alert(msg_ssn(return: true));
-        //             return;
-        //         }
-        //         $arrDays['openings'][] = array(
-        //             "day_key"=> ($key+1),
-        //             "day"=> $day,
-        //             "open"=> $_POST[$day."_open"],
-        //             "close"=> $_POST[$day."_close"]
-        //         );
-        //     }
-        // }
-        
         // $db->insertData['jsn'] = json_encode($arrDays);
         $db->insertData['slug'] = $_POST['slug'];
         $db->insertData['content_group'] = $type;
         $db->insertData['content_type'] = "product";
         $db->insertData['created_by'] = USER['id'];
-        // if (isset($_POST['vendor_id'])) {
-        //     $vndr = getData('pk_user', $_POST['vendor_id']);
-        //     if ($vndr) {
-        //         if ($vndr['user_group'] == 'vendor' || $vndr['user_group'] == 'admin') {
-
-        //             if ((new Model('content'))->exists(['content_group' => 'salon', 'created_by' => $_POST['vendor_id']])) {
-        //                 $salondata = (new Model('content'))->filter_index(['content_group' => 'salon', 'created_by' => $_POST['vendor_id']]);
-        //                 $_SESSION['msg'][] = "This vendor has already registered salon {$salondata[0]['title']}";
-        //                 echo js_alert(msg_ssn(return: true));
-        //                 return;
-        //             }
-        //             $db->insertData['created_by'] = $_POST['vendor_id'];
-        //         } else {
-        //             echo "This user is not vendor or admin";
-        //             $_SESSION['msg'][] = "Please select vender";
-        //             echo js_alert(msg_ssn(return: true));
-        //             return;
-        //         }
-        //     } else {
-        //         echo "Invalid vendor";
-        //         $_SESSION['msg'][] = "Please select vender";
-        //         echo js_alert(msg_ssn(return: true));
-        //         return;
-        //     }
-        // } else {
-        //     echo "Please select vender";
-        //     $_SESSION['msg'][] = "Please select vender";
-        //     echo js_alert(msg_ssn(return: true));
-        //     return;
-        // }
+        
 
         $slug = generate_slug($_POST['slug']);
         if (check_slug_globally($slug) == 0) {

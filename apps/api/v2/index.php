@@ -47,66 +47,66 @@ if ("$url[0]/$v" == "api/$v") {
 //             import("apps/api/$v/api.categories/api.get.sub-categories.php");
 //             return;
 //         }
-// search salons by cat id
-        if ("{$url[2]}/$url[3]" == "search/salon-list-by-cat-id") {
-            import("apps/api/$v/api.listings/api.search.salon-list-by-cat-id.php");
+// get faqs
+        if ("{$url[2]}/$url[3]" == "get/faq-list") {
+            import("apps/api/$v/api.faqs/api.get.faqs.php");
             return;
         }
 // get salons by cat id
-        if ("{$url[2]}/$url[3]" == "get/salon-list-by-cat-id") {
-            import("apps/api/$v/api.listings/api.get.salon-list-by-cat-id.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "get/salon-list-by-cat-id") {
+        //     import("apps/api/$v/api.listings/api.get.salon-list-by-cat-id.php");
+        //     return;
+        // }
 // get salon details
-        if ("{$url[2]}/$url[3]" == "get/salon-by-salon-id") {
-            import("apps/api/$v/api.listings/api.get.salon-details-by-salon-id.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "get/salon-by-salon-id") {
+        //     import("apps/api/$v/api.listings/api.get.salon-details-by-salon-id.php");
+        //     return;
+        // }
 // get my fav salons by token
-        if ("{$url[2]}/$url[3]" == "get/fav-salon-by-user-token") {
-            import("apps/api/$v/api.listings/api.get.fav-salon-list-by-user-token.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "get/fav-salon-by-user-token") {
+        //     import("apps/api/$v/api.listings/api.get.fav-salon-list-by-user-token.php");
+        //     return;
+        // }
 // get salons id
-        if ("{$url[2]}/$url[3]" == "get/fav-salon-by-user-token") {
-            import("apps/api/$v/api.listings/api.get.fav-salon-list-by-user-token.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "get/fav-salon-by-user-token") {
+        //     import("apps/api/$v/api.listings/api.get.fav-salon-list-by-user-token.php");
+        //     return;
+        // }
 // get services salon id
-        if ("{$url[2]}/$url[3]" == "get/services-by-salon-id") {
-            import("apps/api/$v/api.listings/api.get.services-by-salon-id.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "get/services-by-salon-id") {
+        //     import("apps/api/$v/api.listings/api.get.services-by-salon-id.php");
+        //     return;
+        // }
 // request parcel booking
-        if ("{$url[2]}/$url[3]" == "request-for/parcel-booking") {
-            import("apps/api/$v/api.bookings/api.book-my-parcel.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "request-for/parcel-booking") {
+        //     import("apps/api/$v/api.bookings/api.book-my-parcel.php");
+        //     return;
+        // }
 // get available bookings
-        if ("{$url[2]}/$url[3]" == "get/available-bookings") {
-            import("apps/api/$v/api.bookings/api.get-available-bookings.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "get/available-bookings") {
+        //     import("apps/api/$v/api.bookings/api.get-available-bookings.php");
+        //     return;
+        // }
 // send quote by driver
-        if ("{$url[2]}/$url[3]" == "send/quote-by-driver") {
-            import("apps/api/$v/api.bookings/api.send-quote-by-driver-on-avl-bookings.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "send/quote-by-driver") {
+        //     import("apps/api/$v/api.bookings/api.send-quote-by-driver-on-avl-bookings.php");
+        //     return;
+        // }
 // send running orders
-        if ("{$url[2]}/$url[3]" == "driver/running-bookings") {
-            import("apps/api/$v/api.bookings/api.driver-running-bookings.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "driver/running-bookings") {
+        //     import("apps/api/$v/api.bookings/api.driver-running-bookings.php");
+        //     return;
+        // }
 // get my bookings
-        if ("{$url[2]}/$url[3]" == "get/my-bookings") {
-            import("apps/api/$v/api.bookings/api.get-my-bookings.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "get/my-bookings") {
+        //     import("apps/api/$v/api.bookings/api.get-my-bookings.php");
+        //     return;
+        // }
 // driver requests on bookings
-        if ("{$url[2]}/$url[3]" == "driver/requests-his-on-bookings") {
-            import("apps/api/$v/api.bookings/api.driver-requests-his-on-bookings.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "driver/requests-his-on-bookings") {
+        //     import("apps/api/$v/api.bookings/api.driver-requests-his-on-bookings.php");
+        //     return;
+        // }
 
 
 
@@ -259,20 +259,20 @@ if ("$url[0]/$v" == "api/$v") {
             return;
         }
 // Reg company
-        if ("{$url[2]}/$url[3]" == "reg/company") {
-            import("apps/api/$v/api.companies/api.reg.company.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "reg/company") {
+        //     import("apps/api/$v/api.companies/api.reg.company.php");
+        //     return;
+        // }
 // My  companies
-        if ("{$url[2]}/$url[3]" == "get/my-companies") {
-            import("apps/api/$v/api.companies/api.get.my-companies.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "get/my-companies") {
+        //     import("apps/api/$v/api.companies/api.get.my-companies.php");
+        //     return;
+        // }
 // My  companies
-        if ("{$url[2]}/$url[3]" == "update/my-company") {
-            import("apps/api/$v/api.companies/api.update.my-company.php");
-            return;
-        }
+        // if ("{$url[2]}/$url[3]" == "update/my-company") {
+        //     import("apps/api/$v/api.companies/api.update.my-company.php");
+        //     return;
+        // }
 // Profile details 
         if ("{$url[2]}/$url[3]" == "profile/details") {
             import("apps/api/$v/api.users/api.profile-details.php");

@@ -46,29 +46,9 @@ $plugin_dir = "pages";
                     <input type="text" onkeyup="createSlug('page_title', 'page_slug');" id="page_title" required name="page_title" placeholder="Product Name" class="form-control mb-2">
                     <input type="text" placeholder="url-slug" onblur="createSlug(this.id, this.id);" id="page_slug" required  name="slug" class="form-control">
                     <input type="hidden" name="add_new_content" value="add_new_content">           
-                    <div class="row hide">
-                        <div class="col">
-                        <h5>Price</h5>
-                        <input type="text" name="price" class="form-control mb-2 update_page">
-                        </div>
-                        <div class="col">
-                            <h5>Discount Amount</h5>
-                            <input type="text" name="discount_amt" class="form-control mb-2 update_page">
-                        </div>  
-                        <div class="col hide">
-                        <h5>Quantity</h5>
-                        <input type="text" name="qty" class="form-control mb-2 update_page">
-                        </div>    
-                    </div>
+                    
                     <div class="row">
-                    <div class="col-md-6">
-                            <h5>Category</h5>
-                            <?php
-                            $catData=multilevel_categories($parent_id=0,$radio=true); ?>
-                        <select required class="update_page form-select" name="parent_id" id="cats">
-                            <?php echo display_option($nested_categories=$catData,$mark=''); ?>
-                        </select>
-                    </div>
+                   
                     <div class="col-md-6">
                             <h5>Status</h5>
                         <select required class="update_page form-select" name="status" id="ststs">
@@ -113,60 +93,13 @@ $plugin_dir = "pages";
 
     
 
-      <script>
-        
-        // function selectImagee(btnId,inputfileId) {
-        //   var btnId = document.getElementById(btnId);
-        //   var inputfileId = document.getElementById(inputfileId);
-        //   btnId.addEventListener('click',()=>{
-        //     inputfileId.click();
-        //   });
-        // }
-        // selectImagee("selectImageBtn","banner-img");
-      </script>
+     
       <div id="res"></div>
     <?php pkAjax_form("#add-new-cat-btn","#add-new-product-btn-form","#res",'click','post',true); ?>
     <?php ajaxActive(".progress"); ?>  
 
 
-<!-- Gallery -->
-<div class="modal fade" id="GalleryModel" tabindex="-1" aria-labelledby="GalleryModelLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content pk-round">
-      <div class="modal-header">
-         <a class="btn btn-primary" target="_blank" href="/<?php echo home;?>/gallery/upload">Upload More Image</a>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      
-          <div class="container">
-              <div class="row">
-                  <?php 
-                  $gldb = new Mydb('pk_media');
-                  $gal = $gldb->allData("DESC",99999999);
-                  foreach ($gal as $key => $galv):
-                  ?>
-                  <div class="col-md-2">
-                  <center>
-                    <input type="hidden" value="/<?php echo media_root; ?>/images/pages/<?php echo $galv['media_file'] ;?>">
-                    <img class="pk-pointer" onclick="setThisImage<?php echo $galv['id'] ;?>();" id="galr-img-<?php echo $galv['media_file'] ;?>" class="glry-img" src="/<?php echo media_root; ?>/images/pages/<?php echo $galv['media_file'] ;?>" style="width: 90%; height: 90%; object-fit:scale-down;">
-               <script>
-                function setThisImage<?php echo $galv['id'] ;?>() {
-                   document.getElementById("banner-input").value = `<?php echo $galv['media_file'] ;?>`;
-                   document.getElementById("banner-img").src = "/<?php echo media_root; ?>/images/pages/<?php echo $galv['media_file']; ?>";
-                }
-               </script>
-                </center>
-                  </div>
-                  <?php endforeach; ?>
-              </div>
-          </div>        
-        
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Gallery End -->
+
 
 
 

@@ -65,6 +65,26 @@
     margin-left: auto;
     width: 100%;
   }
+  /* Hide the default number input arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* Style the number input to prevent resizing */
+input[type="number"] {
+  appearance: textfield; /* Firefox */
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* Optional: Apply additional styling to make the input field look more like a regular text input */
+input[type="number"] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 </style>
 <style>
     #sidebar-col{

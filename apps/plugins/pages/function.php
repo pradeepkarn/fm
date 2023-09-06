@@ -36,32 +36,15 @@ function updatePage()
         $cat = $db->pk($_POST['page_id']);
         $db->insertData['title'] = $_POST['page_title'];
         $db->insertData['content'] = $_POST['page_content'];
-        if (isset($_POST['parent_id'])) {
-            $db->insertData['parent_id'] = $_POST['parent_id'];
-        }
-        if (isset($_POST['page_content_category'])) {
-            $db->insertData['category'] = sanitize_remove_tags($_POST['page_content_category']);
-        }
+       
         $db->insertData['status'] = $_POST['page_status'];
-        $db->insertData['content_type'] = $_POST['page_content_type'];
-        
+       
         $db->insertData['banner'] = $_POST['page_banner'];
-        $db->insertData['post_category'] = $_POST['post_category'];
-        if (isset($_POST['price'])) {
-            $db->insertData['price'] = sanitize_remove_tags($_POST['price']);
-        }
-        if (isset($_POST['discount_amt'])) {
-            $db->insertData['discount_amt'] = sanitize_remove_tags($_POST['discount_amt']);
-        }
-        if (isset($_POST['qty'])) {
-            $db->insertData['qty'] = sanitize_remove_tags($_POST['qty']);
-        }
-        // $db->insertData['content_info'] = $_POST['page_content_info'];
+        
+
         $db->insertData['update_date'] = date("Y-m-d h:i:sa", time());
-        $author = new Mydb('pk_user');
-        // $auth_user = $author->pkData($_SESSION['user_id'])['id'];
-        // $db->insertData['created_by'] = $auth_user;
-        $db->insertData['author'] = $_POST['page_author'];;
+       
+   
         if (isset($_POST['page_show_title']) && $_POST['page_show_title']==="on") {
             $db->insertData['show_title'] = 1;
         }
@@ -90,23 +73,13 @@ function addContent($type="page")
         $db->tableName = "content";
         $db->insertData['title'] = $_POST['page_title'];
         $db->insertData['content'] = 'Write your content here';
-        if (isset($_POST['parent_id'])) {
-            $db->insertData['parent_id'] = $_POST['parent_id'];
-        }
+       
         if (isset($_POST['status'])) {
             $db->insertData['status'] = $_POST['status'];
         }else{
             $db->insertData['status'] = 'draft';
         }
-        if (isset($_POST['price'])) {
-            $db->insertData['price'] = sanitize_remove_tags($_POST['price']);
-        }
-        if (isset($_POST['discount_amt'])) {
-            $db->insertData['discount_amt'] = sanitize_remove_tags($_POST['discount_amt']);
-        }
-        if (isset($_POST['qty'])) {
-            $db->insertData['qty'] = sanitize_remove_tags($_POST['qty']);
-        }
+        
         $db->insertData['slug'] = $_POST['slug'];
         $db->insertData['content_group'] = $type;
         $db->insertData['content_type'] = "page";

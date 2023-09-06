@@ -22,16 +22,19 @@
                 <a class="nav-link text-white" href="/<?php echo home; ?>/admin/sliders"> <i class="fa-solid fa-rectangle-list"></i> Sliders </a>
             </li>
             
-            <!-- <li class="nav-item">
-                <a class="nav-link text-white" href="/<?php echo home; ?>/admin/enquiries"> <i class="fa-solid fa-rectangle-list"></i> Enquires </a>
-            </li> -->
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/<?php echo home; ?>/admin/offers"> <i class="fa-solid fa-rectangle-list"></i> Offers </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/<?php echo home; ?>/admin/faqs"> <i class="fa-solid fa-rectangle-list"></i> FAQs </a>
+            </li>
 
             <li class="nav-item ">
                 <a class="nav-link text-white" href="/<?php echo home; ?>/admin/users/list/?user_group=user"> <i class="fa-solid fa-users"></i> Users </a>
             </li>
-            <!-- <li class="nav-item ">
-                <a class="nav-link text-white" href="/<?php //echo home; ?>/admin/users/list/?user_group=driver"> <i class="fa-solid fa-users"></i> Driver </a>
-            </li> -->
+            <li class="nav-item ">
+                <a class="nav-link text-white" href="/<?php echo home; ?>/admin/pages"> <i class="fa-solid fa-rectangle-list"></i> Pages </a>
+            </li>
             
             <!-- <li class="nav-item">
                 <a class="nav-link text-white" href="/<?php //echo home; ?>/admin/wallets/list/?wallet_group=driver"> <i class="fa-solid fa-rectangle-list"></i> Wallets (Drivers) </a>

@@ -21,7 +21,7 @@ x.addListener(sideMenuResponsive) // Attach listener function on state changes
     function createSlug(getid,setid){
         var str = document.getElementById(getid).value;
         var setslug = document.getElementById(setid);
-        setslug.value = str.replace(/\s+/g, '-').replaceAll("/","-").replaceAll("\\","-").toLowerCase();
+        setslug.value = str.replace(/\s+/g, '-').replaceAll("/","-").replaceAll("\\","-").replaceAll("?","").toLowerCase();
     }
 </script>
 <?php

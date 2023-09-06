@@ -63,6 +63,11 @@ if (isset($req_data->gender)) {
 if (isset($req_data->dob)) {
     $arr['dob'] = isset($req_data->dob) ? $req_data->dob : $user->dob;
 }
+$arr['first_name'] = isset($req_data->first_name) ? $req_data->first_name : $user->first_name;
+$arr['last_name'] = isset($req_data->last_name) ? $req_data->last_name : $user->last_name;
+if (isset($req_data->dob)) {
+    $arr['dob'] = isset($req_data->dob) ? $req_data->dob : $user->dob;
+}
 if (isset($req_data->mobile)) {
     $mblusr = (new Model('pk_user'))->filter_index(['mobile' => $req_data->mobile]);
     if (count($mblusr) > 0) {

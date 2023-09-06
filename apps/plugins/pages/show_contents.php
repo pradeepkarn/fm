@@ -44,14 +44,10 @@ $plugin_dir = "pages";
             <table id="datatablesSimple" class="table-sm table table-bordered">
                 <thead>
                     <th>Content ID</th>
-                    <th>Status</th>
+                 
                     <th>Thumbnail</th>
                     <th>Title</th>
                     <th>Slug</th>
-                    <th class="text-center">Status</th>
-                    <th>Category</th>
-                    <th>Type</th>
-                    <th class="hide">View</th>
                     <th>Edit</th>
                     <th>Trash</th>
                 </thead>
@@ -65,17 +61,14 @@ $plugin_dir = "pages";
                 foreach ($prods as $pk => $pv) { ?>
                 <tr>
                     <td><?php echo $pv['id']; ?></td> 
-                    <td <?php matchData($pv['status'],'published','class="bg-success text-white"'); 
-                                matchData($pv['status'],'trash','class="bg-secondary text-white"');
-                                matchData($pv['status'],'draft','class="bg-warning"');
-                    ?>><?php echo $pv['status']; ?></td> 
+                    
                     <td><img style="height: 50px;" src="/<?php echo media_root; ?>/images/pages/<?php echo $pv['banner']; ?>"></td> 
                     <td><?php echo $pv['title']; ?></td> 
                     <td><?php echo $pv['slug']; ?></td> 
-                    <td><p class="text-center  text-capt px-1 pb-1 pk-round <?php echo ($pv['status']!="listed")?"text-dark bg-warning":"text-white bg-success"; ?>"><?php echo $pv['status']; ?></p></td> 
-                    <td><?php echo (getData("content",$pv['parent_id'])!=false)?getData("content",$pv['parent_id'])['title']:"NA"; ?></td> 
-                    <td><span class="<?php echo ($pv['post_category']=="featured")?"p-1 bg-primary text-white":""; echo ($pv['post_category']=="trending")?"p-1 bg-success text-white":""; ?>"><?php echo $pv['post_category']; ?></span></td> 
-                    <td class="hide"><a target="_blank" href='<?php echo "/".home."/item/?lid={$pv['id']}"; ?>'>View</a></td> 
+                   
+                    
+                    
+                   
                     <td><a href="/<?php echo home; ?>/admin/<?php echo $plugin_dir; ?>/edit/<?php echo $pv['id']; ?>">Edit</a></td>
                     <td><a data-bs-toggle="modal" data-bs-target="#deltModal<?php echo $pv['id']; ?>" href="javascript:void(0);" class="text-danger">Delete</a></td>
                     <div class="modal" id="deltModal<?php echo $pv['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel<?php echo $pv['id']; ?>" aria-hidden="true">

@@ -8,7 +8,7 @@
   <body>
     
   
-        <?php import("apps/view/inc/navbar.php"); ?>
+        <?php //import("apps/view/inc/navbar.php"); ?>
             <?php import("apps/view/components/$screen/contact-form.php"); ?>
           <?php import("apps/view/inc/footer-credit.php"); ?>
 

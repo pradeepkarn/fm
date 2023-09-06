@@ -100,6 +100,14 @@ switch ($path) {
           import("apps/plugins/users/index.php");
           break;
         }
+        else if($url[1]=="faqs"){
+          if(!$pass){
+            header("Location:/".home."/admin");
+            return;
+          }
+          import("apps/plugins/faqs/index.php");
+          break;
+        }
         // else if($url[1]=="promotions"){
         //   if(!$pass){
         //     header("Location:/".home."/admin");
@@ -139,14 +147,14 @@ switch ($path) {
         //   import("apps/admin/components/locations/loc-store-ajax.php");
         //   break;
         // }
-        // else if($url[1]=="products"){
-        //   if(!$pass){
-        //     header("Location:/".home);
-        //     return;
-        //   }
-        //   import("apps/plugins/products/index.php");
-        //   break;
-        // }
+        else if($url[1]=="offers"){
+          if(!$pass){
+            header("Location:/".home);
+            return;
+          }
+          import("apps/plugins/offers/index.php");
+          break;
+        }
         // else if($url[1]=="wallets"){
         //   if(!$pass){
         //     header("Location:/".home);
