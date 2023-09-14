@@ -42,11 +42,16 @@ $page = $page->pk($GLOBALS['url_last_param']);
                                     <div class="col-md-6">
                                         <h3>Category</h3>
                                         <?php
-                                        $catData = multilevel_categories($parent_id = 0, $radio = true); ?>
-                                        <select required class="update_page form-control" name="parent_id" id="cats">
-                                            <option value="0" selected>Parent</option>
-                                            <?php echo display_option($nested_categories = $catData, $mark = ''); ?>
-                                        </select>
+                                            $db = new Dbobjects;
+                                            $catData = $db->show("select id, title from content where content_group='fm_category'");
+                                            ?>
+                                            <select required class="update_page form-select" name="parent_id" id="cats">
+                                                <?php foreach ($catData as $key => $ct) { 
+                                                    $ct = obj($ct);
+                                                    ?>
+                                                    <option value="<?php echo $ct->id; ?>"><?php echo $ct->title; ?></option>
+                                               <?php } ?>
+                                            </select>
                                         <script>
                                             var exists = false;
                                             $('#cats option').each(function() {

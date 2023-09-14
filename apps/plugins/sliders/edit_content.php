@@ -89,29 +89,7 @@ $page = $page->pk($GLOBALS['url_last_param']);
                                 <h5>Item Name</h5>
                                 <input type="text" name="page_title" class="form-control mb-2 update_page" value="<?php echo $page['title']; ?>">
 
-                                <!-- <div class="row">
-                        <div class="col">
-                        <h5>Price</h5>
-                        <input type="text" name="price" class="form-control mb-2 update_page" value="<?php echo $page['price']; ?>">
-                        </div>
-                        <div class="col">
-                            <h5>Discount Amount</h5>
-                            <input type="text" name="discount_amt" class="form-control mb-2 update_page" value="<?php echo $page['discount_amt']; ?>">
-                        </div> 
-                        <div class="col">
-                            <h5>Sale Price</h5>
-                            <b>= <?php // echo $page['price']-$page['discount_amt']; 
-                                    ?></b>
-                        </div> 
-                        <div class="col hide">
-                        <h5>Quantity</h5>
-                        <input type="text" name="qty" class="form-control mb-2 update_page" value="<?php echo $page['qty']; ?>">
-                        </div>    
-                    </div> -->
-
-                                <!-- <h5>Title in English </h5>
-                    <input type="text" name="page_content_info" class="form-control mb-2 update_page" value="<?php //echo $page['content_info']; 
-                                                                                                                ?>"> -->
+                               
                                 <input type="checkbox" <?php matchData($page['show_title'], 1, "checked"); ?> name="page_show_title" class="update_page">
                                 <?php matchData($page['show_title'], 0, "Check to show Page Title"); ?>
                                 <?php matchData($page['show_title'], 1, "Uncheck to hide Page Title"); ?> &nbsp;

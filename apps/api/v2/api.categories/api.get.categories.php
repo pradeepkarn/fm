@@ -30,7 +30,7 @@ if (isset($_GET['cat_id'])) {
     }
 } else {
     $db = new Model('content');
-    $listings = $db->filter_index(['content_group' => 'listing_category']);
+    $listings = $db->filter_index(['content_group' => 'fm_category']);
     if ($listings == false) {
         $data['msg'] = "No Category found";
         $data['data'] = null;

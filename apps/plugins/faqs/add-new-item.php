@@ -55,9 +55,15 @@ $content_group = "faq";
                                         <div class="col-md-6">
                                             <h5>Category</h5>
                                             <?php
-                                            $catData = multilevel_categories($parent_id = 0, $radio = true); ?>
+                                            $db = new Dbobjects;
+                                            $catData = $db->show("select id, title from content where content_group='fm_category'");
+                                            ?>
                                             <select required class="update_page form-select" name="parent_id" id="cats">
-                                                <?php echo display_option($nested_categories = $catData, $mark = ''); ?>
+                                                <?php foreach ($catData as $key => $ct) { 
+                                                    $ct = obj($ct);
+                                                    ?>
+                                                    <option value="<?php echo $ct->id; ?>"><?php echo $ct->title; ?></option>
+                                               <?php } ?>
                                             </select>
                                         </div>
                                         <div class="col-md-6">

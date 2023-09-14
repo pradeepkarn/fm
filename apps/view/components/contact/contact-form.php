@@ -5,29 +5,22 @@ $user = USER;
 <section style="min-height: 100vh; padding-top:100px;">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h4>Email: info@demo.com</h4>
-            <h4>Contact: 960000000000</h4>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-8 grid-margin">
+      <div class="col-md-8 mx-auto grid-margin">
+
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Contact Us</h4>
             <form class="form-sample" id="update-my-profile-form" method="post" action="/<?php echo home; ?>/send-enquiry-ajax">
-             
+
               <div class="row">
-                <div class="col-md-12 my-2">
+                <!-- <div class="col-md-12 my-2">
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Company/Shop</label>
                     <div class="col-sm-9">
                       <input type="text" name="company" class="form-control">
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-12 my-2">
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Full Name</label>
@@ -55,15 +48,15 @@ $user = USER;
                   </div>
                 </div>
               </div>
-             
+
               <div class="row">
                 <div class="col-md-12 my-2">
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Title</label>
                     <div class="col-sm-9">
                       <input type="text" name="subject" class="form-control">
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="col-md-12 my-2">
                   <div class="form-group row">
@@ -74,10 +67,14 @@ $user = USER;
                   </div>
                 </div>
               </div>
-
+            
 
               <div class="row">
                 <div class="col-md-12 text-end">
+                <div class="card-body">
+                  <h4>Email: dealcityke@gmail.com</h4>
+                  <h4>Contact: +254</h4>
+                </div>
                   <div id="res"></div>
                   <button id="updateProfileBtn" type="button" class="btn btn-primary btn-lg btn-block">
                     <i class="mdi mdi-email"></i> Send </button>
@@ -85,6 +82,7 @@ $user = USER;
               </div>
             </form>
           </div>
+
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ if ("{$url[0]}/{$url[1]}" == "admin/categories") {
 switch ($path) {
     case "admin/categories":
         if (isset($_POST['add_new_content'])) {
-            $pageid = addContent($type="listing_category");
+            $pageid = addContent($type="fm_category");
             if($pageid == false){
                 echo js_alert("Duplicate slug, Change slug");
             }
@@ -130,7 +130,7 @@ switch ($path) {
                 echo js_alert('Empty name is not allowed');
                 return;
             }
-            $pageid = addContent($type="listing_category");
+            $pageid = addContent($type="fm_category");
             
             if (isset($_FILES['banner']) && $_FILES['banner']["error"]==0 && filter_var($pageid,FILTER_VALIDATE_INT)) {
                 $contentid = $pageid;

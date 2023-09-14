@@ -163,7 +163,7 @@ function generate_dummy_email($prefix = null)
 {
   return rand(1000, 9999) . "_" . uniqid($prefix) . "@example.com";
 }
-function bsmodal($id = "", $title = "", $body = "", $btn_id, $btn_text = "Action", $btn_class = "btn btn-primary", $size = "modal-sm", $modalclasses = "")
+function bsmodal($id = "model", $title = "model", $body = "body", $btn_id="btnid", $btn_text = "Action", $btn_class = "btn btn-primary", $size = "modal-sm", $modalclasses = "")
 {
   $str = "
 <div class='modal fade' id='$id' tabindex='-1' aria-hidden='true'>
@@ -185,7 +185,7 @@ $body
 </div>";
   return $str;
 }
-function popmodal($id = "", $title = "", $body = "", $btn_id, $btn_text = "Action", $btn_class = "btn btn-primary", $size = "modal-sm", $close_btn_class = "")
+function popmodal($id = "id", $title = "title", $body = "body", $btn_id="btn", $btn_text = "Action", $btn_class = "btn btn-primary", $size = "modal-sm", $close_btn_class = "")
 {
   $str = "
 <div class='modal fade' id='$id' tabindex='-1' aria-hidden='true'>
@@ -748,7 +748,7 @@ function row_xists($table, $query)
   return (new Model($table))->exists($query);
 }
 
-function upload_file($ext_arr = [], $file, $media_dir = "images/pages/", $any_name)
+function upload_file($ext_arr = [], $file="", $media_dir = "images/pages/", $any_name="")
 {
   if ($file['name'] != "" && $file['error'] == UPLOAD_ERR_OK) {
     $ext = pathinfo($file['name'], PATHINFO_EXTENSION);

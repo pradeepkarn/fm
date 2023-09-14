@@ -62,7 +62,7 @@ if (
         echo json_encode($res);
         die();
     }
-    $ugarr = ['user'];
+    $ugarr = ['user','restaurant','driver'];
     $paramObj->mobile = intval($req->mobile);
     $paramObj->email = $req->email;
     if ($username == false) {

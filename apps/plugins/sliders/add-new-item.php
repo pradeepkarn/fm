@@ -51,25 +51,7 @@ $plugin_dir = "sliders";
                                     <input type="text" placeholder="url-slug" onblur="createSlug(this.id, this.id);" id="page_slug" required name="slug" class="form-control">
                                     <input type="hidden" name="add_new_content" value="add_new_content">
                                     <div class="row">
-                                        <!-- <div class="col">
-                                <h5>Slider Group</h5>
-                            <select required class="update_page form-select" name="content_type">
-                                <option value="main">Main</option>
-                                <option value="deals">Deals</option>
-                            </select>
-                        </div> -->
-                                        <!-- <div class="col hide">
-                        <h5>Price</h5>
-                        <input type="text" name="price" class="form-control mb-2 update_page">
-                        </div> -->
-                                        <!-- <div class="col hide">
-                            <h5>Discount Amount</h5>
-                            <input type="text" name="discount_amt" class="form-control mb-2 update_page">
-                        </div>   -->
-                                        <!-- <div class="col hide">
-                        <h5>Quantity</h5>
-                        <input type="text" name="qty" class="form-control mb-2 update_page">
-                        </div>     -->
+                                        
                                     </div>
                                     <div class="row">
 
@@ -82,7 +64,7 @@ $plugin_dir = "sliders";
                                         </div>
                                     </div>
                                     <h5>Details <i class="fas fa-arrow-down"></i></h5>
-                                    <textarea name="content" class="tiny_textarea form-control mb-2 update_page" rows="10"></textarea>
+                                    <textarea name="content" class="form-control mb-2 update_page" rows="10"></textarea>
 
 
                                     <div class="d-grid mb-5">
@@ -133,45 +115,7 @@ $plugin_dir = "sliders";
             <?php ajaxActive(".progress"); ?>
 
 
-            <!-- Gallery -->
-            <div class="modal fade" id="GalleryModel" tabindex="-1" aria-labelledby="GalleryModelLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content pk-round">
-                        <div class="modal-header">
-                            <a class="btn btn-primary" target="_blank" href="/<?php echo home; ?>/gallery/upload">Upload More Image</a>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-
-                            <div class="container">
-                                <div class="row">
-                                    <?php
-                                    $gldb = new Mydb('pk_media');
-                                    $gal = $gldb->allData("DESC", 99999999);
-                                    foreach ($gal as $key => $galv) :
-                                    ?>
-                                        <div class="col-md-2">
-                                            <center>
-                                                <input type="hidden" value="/<?php echo media_root; ?>/images/pages/<?php echo $galv['media_file']; ?>">
-                                                <img class="pk-pointer" onclick="setThisImage<?php echo $galv['id']; ?>();" id="galr-img-<?php echo $galv['media_file']; ?>" class="glry-img" src="/<?php echo media_root; ?>/images/pages/<?php echo $galv['media_file']; ?>" style="width: 90%; height: 90%; object-fit:scale-down;">
-                                                <script>
-                                                    function setThisImage<?php echo $galv['id']; ?>() {
-                                                        document.getElementById("banner-input").value = `<?php echo $galv['media_file']; ?>`;
-                                                        document.getElementById("banner-img").src = "/<?php echo media_root; ?>/images/pages/<?php echo $galv['media_file']; ?>";
-                                                    }
-                                                </script>
-                                            </center>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Gallery End -->
-
+          
 
 
 

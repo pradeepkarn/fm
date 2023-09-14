@@ -47,7 +47,7 @@ function updatePage()
         return $db->update();
     }
 }
-function addContent($type="listing_category")
+function addContent($type="fm_category")
 {
     // $cats = (new Model('content'))->filter_index(array('content_group'=>'listing_category'));
     // if ($cats!=false) {
