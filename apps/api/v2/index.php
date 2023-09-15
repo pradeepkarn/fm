@@ -178,9 +178,13 @@ if ("$url[0]/$v" == "api/$v") {
             import("apps/api/$v/api.enquiries/api.send-enquiry.php");
             return;
         }
-//get sliders
-        if ("{$url[2]}/$url[3]" == "get/sliders") {
-            import("apps/api/$v/api.sliders/api.get.sliders.php");
+//get banners
+        // if ("{$url[2]}/$url[3]" == "get/sliders") {
+        //     import("apps/api/$v/api.sliders/api.get.sliders.php");
+        //     return;
+        // }
+        if ("{$url[2]}/$url[3]" == "get/mainbanners") {
+            import("apps/api/$v/api.mainbanners/api.get.banners.php");
             return;
         }
         // if ("{$url[2]}/$url[3]" == "get/deal-sliders") {

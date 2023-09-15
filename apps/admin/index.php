@@ -243,6 +243,14 @@ switch ($path) {
           import("apps/plugins/sliders/index.php");
           break;
         }
+        else if($url[1]=="mainbanners"){
+          if(!$pass){
+            header("Location:/".home."/admin");
+            return;
+          }
+          import("apps/plugins/mainbanners/index.php");
+          break;
+        }
         // else if($url[1]=="reviews"){
         //   if(!is_superuser()){
         //     header("Location:/".home."/admin");

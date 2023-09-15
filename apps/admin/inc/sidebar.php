@@ -19,6 +19,9 @@
             <hr style="color:white;">
             <?php if (is_superuser()) { ?>
             <li class="nav-item">
+                <a class="nav-link text-white" href="/<?php echo home; ?>/admin/mainbanners"> <i class="fa-solid fa-rectangle-list"></i> Mainbanners </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-white" href="/<?php echo home; ?>/admin/sliders"> <i class="fa-solid fa-rectangle-list"></i> Sliders </a>
             </li>
             
