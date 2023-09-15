@@ -1,7 +1,7 @@
 <?php
 $v = API_V;
 $db = new Model('content');
-$transportations = $db->filter_index(array('content_group' => 'slider'), $ord = "DESC", $limit = "100", $change_order_by_col = "id");
+$transportations = $db->filter_index(array('content_group' => 'mainbanner'), $ord = "DESC", $limit = "100", $change_order_by_col = "id");
 $listings = array_merge($transportations);
 if ($listings == false) {
     $data['msg'] = "No banners";
